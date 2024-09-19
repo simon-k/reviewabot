@@ -21,7 +21,7 @@ jobs:
       run: dotnet restore src/Reviewabot
       
     - name: Build
-      run: dotnet build src/Reviewabot --no-restore -c Release  -f net8.0 /p:Version=${{github.event.release.name}}
+      run: dotnet build src/Reviewabot --no-restore -c Release  -f net8.0 /p:Version=${{github.event.release.tag_name}}
       
     - name: Test
       run: dotnet test src/Reviewabot --no-build --verbosity normal
