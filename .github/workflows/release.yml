@@ -28,6 +28,6 @@ jobs:
 
     - uses: AButler/upload-release-assets@v3.0
       with:
-        files: "Reviewabot.Console.dll"
+        files: "/home/runner/work/reviewabot/reviewabot/src/Reviewabot/Reviewabot.Console/bin/Release/net8.0/Reviewabot.Console.dll"
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         release-tag: ${{github.event.release.tag_name}}
