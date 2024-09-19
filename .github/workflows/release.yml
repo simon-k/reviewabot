@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore src/Reviewabot
+      
+    - name: Build
+      run: dotnet build src/Reviewabot --no-restore -c Release  -f net8.0 /p:Version=${{github.event.release.name}}
+      
+    - name: Test
+      run: dotnet test src/Reviewabot --no-build --verbosity normal
+
+    - uses: AButler/upload-release-assets@v3.0
+      with:
+        files: "Reviewabot.Console.dll"
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        release-tag: ${{github.event.release.tag_name}}
