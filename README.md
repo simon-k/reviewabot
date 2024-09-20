@@ -17,7 +17,19 @@ Download the source and run the following command in the root of the project:
 dotnet run --owner=simon-k --repo=hello-api --prnumber=4 --openapikey=redacted --githubpat=redacted
 ```
 
-Or download the released executable and run it with the same arguments.
+Or download the released executable matching your system, and run it with the same arguments.
+
+```bash
+./Reviewabot.Console-osx-arm64 --owner=simon-k --repo=hello-api --prnumber=4 --openapikey=redacted --githubpat=redacted
+```
+
+```bash
+./Reviewabot.Console-linux-x64 --owner=simon-k --repo=hello-api --prnumber=4 --openapikey=redacted --githubpat=redacted
+```
+
+```bash
+./Reviewabot.Console-win-x64.exe--owner=simon-k --repo=hello-api --prnumber=4 --openapikey=redacted --githubpat=redacted
+```
 
 ### Command line arguments
 | Argument | Description | Required |

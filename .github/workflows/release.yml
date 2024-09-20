@@ -32,9 +32,50 @@ jobs:
     - name: Rename
       run: mv //home/runner/work/reviewabot/reviewabot/src/Reviewabot/Reviewabot.Console/bin/Release/net8.0/linux-x64/publish/Reviewabot.Console Reviewabot.Console-linux-x64
 
-    - name: Upload Release Asset  
+    - name: Upload Linux Release Asset  
       uses: AButler/upload-release-assets@v3.0
       with:
         files: "Reviewabot.Console-linux-x64"
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         release-tag: ${{github.event.release.tag_name}}
+
+    - name: Publish osx-arm64
+      run: dotnet publish src/Reviewabot/Reviewabot.Console -r osx-arm64 -p:PublishSingleFile=true --self-contained false -c Release -f net8.0
+
+    - name: Rename
+      run: mv //home/runner/work/reviewabot/reviewabot/src/Reviewabot/Reviewabot.Console/bin/Release/net8.0/osx-arm64/publish/Reviewabot.Console Reviewabot.Console-osx-arm64
+
+    - name: Upload OSX Release Asset
+      uses: AButler/upload-release-assets@v3.0
+      with:
+        files: "Reviewabot.Console-osx-arm64"
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        release-tag: ${{github.event.release.tag_name}} 
+
+    - name: Publish OSX Release Asset
+      run: dotnet publish src/Reviewabot/Reviewabot.Console -r osx-arm64 -p:PublishSingleFile=true --self-contained false -c Release -f net8.0
+
+    - name: Rename
+      run: mv //home/runner/work/reviewabot/reviewabot/src/Reviewabot/Reviewabot.Console/bin/Release/net8.0/osx-arm64/publish/Reviewabot.Console Reviewabot.Console-osx-arm64
+
+    - name: Upload Arm Release Asset
+      uses: AButler/upload-release-assets@v3.0
+      with:
+        files: "Reviewabot.Console-osx-arm64"
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        release-tag: ${{github.event.release.tag_name}}
+
+    - name: Publish Windows Release Asset
+      run: dotnet publish src/Reviewabot/Reviewabot.Console -r win-x64 -p:PublishSingleFile=true --self-contained false -c Release -f net8.0
+
+    - name: Rename
+      run: mv //home/runner/work/reviewabot/reviewabot/src/Reviewabot/Reviewabot.Console/bin/Release/net8.0/win-x64/publish/Reviewabot.Console.exe Reviewabot.Console-win-x64.exe
+
+    - name: Upload Arm Release Asset
+      uses: AButler/upload-release-assets@v3.0
+      with:
+        files: "Reviewabot.Console-win-x64.exe"
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        release-tag: ${{github.event.release.tag_name}}
+  
+  
