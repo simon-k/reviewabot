@@ -34,4 +34,10 @@ Or download the released executable and run it with the same arguments.
 * Make instructions configurable form a markdown file
 * Use Spectre Console to make things nice to look at
 * Create a GitHub task template
+* Create some tests
 
+## License
+See the [LICENSE.md](LICENSE.md) file for license rights and limitations (MIT).
+
+If you use this for anything cool, please let me know. I would love to hear about it 🫶.
+```

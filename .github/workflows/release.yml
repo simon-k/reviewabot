@@ -26,8 +26,15 @@ jobs:
     - name: Test
       run: dotnet test src/Reviewabot --no-build --verbosity normal
 
-    - uses: AButler/upload-release-assets@v3.0
+    - name: Publish linux-x64
+      run: dotnet publish src/Reviewabot/Reviewabot.Console -r linux-x64 -p:PublishSingleFile=true --self-contained false -c Release -f net8.0
+
+    - name: Rename
+      run: mv //home/runner/work/reviewabot/reviewabot/src/Reviewabot/Reviewabot.Console/bin/Release/net8.0/linux-x64/publish/Reviewabot.Console Reviewabot.Console-linux-x64
+
+    - name: Upload Release Asset  
+      uses: AButler/upload-release-assets@v3.0
       with:
-        files: "/home/runner/work/reviewabot/reviewabot/src/Reviewabot/Reviewabot.Console/bin/Release/net8.0/Reviewabot.Console.dll"
+        files: "Reviewabot.Console-linux-x64"
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         release-tag: ${{github.event.release.tag_name}}
