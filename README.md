@@ -84,8 +84,6 @@ _The pipeline is skipped_
 This is most likeley because the repository action variable `REVIEWER_NAME` has the wrong value. 
 It should be the name of the user that reviews the code. It is the user that you created in step 1.
 
-
-
 ## How to run this locally
 Download the source and run the following command in the root of the project:
 
@@ -108,6 +106,12 @@ dotnet run --owner=simon-k --repo=hello-api --prnumber=4 --openapikey=XXX --gith
 | prnumber | The PR number                                                 | Yes |
 | openapikey | The key for the OpenAI API                                             | Yes |
 | githubpat | The Personal Access Token for the GitHub Account that makes the review | Yes |
+
+## How to contribute
+Contact me. I would like your input. Or just create a PR with your improvements.
+
+## How to release
+Create a new release in GitHub. The GitHub Release Action generate the binaries and attach them to the release.
 
 ## TODO
 * Use a better tool for parsing command line arguments
