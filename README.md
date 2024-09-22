@@ -1,3 +1,5 @@
+![Banner](docs/images/banner.png)
+
 # Reviewabot
 A friend that can help you review PRs when there are no one else to help you.
 
@@ -122,7 +124,8 @@ Create a new release in GitHub. The GitHub Release Action generate the binaries 
 * Create a GitHub Action that runs the bot
 
 ## License
-See the [LICENSE.md](LICENSE.md) file for license rights and limitations (MIT).
+See the [LICENSE](LICENSE) file for license rights and limitations (MIT).
 
 If you use this for anything cool, please let me know. I would love to hear about it 🫶.
-```
+
+![Logo](docs/images/reviewabot.png)
