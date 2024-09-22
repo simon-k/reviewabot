@@ -27,9 +27,19 @@ public class PullRequest
     {
         // https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#get-a-pull-request
         var response = await _client.GetAsync($"https://api.github.com/repos/{owner}/{repo}/pulls/{prNumber}");
+        response.EnsureSuccessStatusCode();
         return await response.Content.ReadAsStringAsync();
     }
 
+    public async Task<List<PullRequestFile>> GetPrFilesAsync(string owner, string repo, string prNumber)
+    {
+        // https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#list-pull-requests-files
+        var response = await _client.GetAsync($"https://api.github.com/repos/{owner}/{repo}/pulls/{prNumber}/files?per_page=100");  //TODO: Implement pagination to handle more than 100 files
+        response.EnsureSuccessStatusCode();
+        var files = await response.Content.ReadFromJsonAsync<List<PullRequestFile>>(_serializerOptions) ?? throw new Exception("No files found in Pull Request");
+        return files;
+    }
+    
     public async Task ReviewPrAsync(string owner, string repo, string prNumber, string eventName, string review)
     {
         // https://docs.github.com/en/rest/pulls/reviews?apiVersion=2022-11-28#create-a-review-for-a-pull-request
