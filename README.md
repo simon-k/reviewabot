@@ -1,4 +1,4 @@
-![Banner](docs/images/banner.png)
+![Banner](docs/images/banner-with-text.png)
 
 # Reviewabot
 A friend that can help you review PRs when there are no one else to help you.
@@ -127,5 +127,3 @@ Create a new release in GitHub. The GitHub Release Action generate the binaries 
 See the [LICENSE](LICENSE) file for license rights and limitations (MIT).
 
 If you use this for anything cool, please let me know. I would love to hear about it 🫶.
-
-![Logo](docs/images/reviewabot.png)
