@@ -19,12 +19,13 @@ var gitHubPat = config["GitHubPat"] ?? throw new InvalidOperationException("GitH
 
 // Print the configuration for debugging purposes. 
 Console.WriteLine($"Owner: {owner}");
-Console.WriteLine($"OpenApiKey: {new string('*', openApiApiKey.Length - 4) + openApiApiKey[^4..]}");
-Console.WriteLine($"GitHubPat: {new string('*', gitHubPat.Length - 4) + gitHubPat[^4..]}");
+Console.WriteLine($"Repo: {repo}");
+Console.WriteLine($"PrNumber: {prNumber}");
+Console.WriteLine("OpenApiKey: ***");
+Console.WriteLine("GitHubPat: ***");
 
 // Bootstrapping the kernel
-var handler = new HttpClientHandler();              // TODO Make configurable
-handler.CheckCertificateRevocationList = false;
+var handler = new HttpClientHandler();
 var client = new HttpClient(handler);
 
 var settings = new OpenAIPromptExecutionSettings()
