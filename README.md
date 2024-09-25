@@ -13,69 +13,16 @@ The reason is that the tool does not have the entire context of the repository l
 So there might be better solutions out there. And I am sure that GitHub is working on a CodeReview Bot that will be able to do this better.
 
 ## How to use this too
-### 1. Create a user account for the reviewer/bot
-Go to Github and create a new user account that will be used to review the PRs.
+### 1. Create a user account for the reviewer/bot and add it as a collaborator
+Go to Github and create a new user account that will be used to review the PRs. Add the new user as a collaborator to your repository.
 ### 2. Create a Personal Access Token
 Under settings for the new user account, create a new Personal Access Token that has access to source and read/write to Pull Requests.
 ### 3. Create an OpenAI API key
 Go to OpenAI and create an API key.
 ### 4. Create a GitHub Action in your repository
-Create a new GitHub Action in your repository that runs the Reviewabot.
+Create a new GitHub Action in your repository that runs the Reviewabot. Use the action from the Marketplace.
 
-Action example
-```yaml
-# INSTRUCTIONS
-# This action will run whenever a reviewer is assigned and the reviewer name matches the value of the repository variable.
-# The action will download Reviewabot and run, and as a result your assigned reviewer will generate a review based on GPT.
-#
-# Create the following GitHub action secrets in your repository settings:
-#   OPENAPI_KEY -  Contains your OpenAI API Key
-#   REVIEWER_GITHUB_PAT - Contains your reviewers GitHub PAT woth permissions to read content and write Pull Requests.
-#
-# Create the following GitHub action variable in your repository settings:
-#   REQUESTED_REVIEWER_NAME - Your reviewers GitHub username 
-
-name: Review PR
-
-on:
-  pull_request_target:
-    types: [review_requested]
-    
-env:
-  REQUESTED_REVIEWER_NAME: ${{ github.event.requested_reviewer.login}}
-  REVIEWER_NAME: ${{ vars.REVIEWER_NAME }}
-
-jobs:
-  review:
-    if: ${{ github.event.requested_reviewer.login == vars.REVIEWER_NAME }}
-    runs-on: ubuntu-latest
-    steps:
-    
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-
-    - name: Download Reviewabot Latest Release
-      uses: robinraju/release-downloader@v1
-      with:
-        repository: 'simon-k/reviewabot'
-        latest: true
-        fileName: 'Reviewabot.Console-linux-x64'
-        out-file-path: 'Reviewabot'
-
-    - name: Make Reviewabot executable
-      run: chmod +x $GITHUB_WORKSPACE/Reviewabot/Reviewabot.Console-linux-x64
-
-    - name: Review PR
-      run: |
-        $GITHUB_WORKSPACE/Reviewabot/Reviewabot.Console-linux-x64 \
-          --owner=${{github.repository_owner}} \
-          --repo=${{github.event.repository.name}} \
-          --prnumber=${{ github.event.number }} \
-          --openapikey=${{secrets.OPENAPI_KEY}} \
-          --githubpat=${{secrets.REVIEWER_GITHUB_PAT}}
-```
+https://github.com/marketplace/actions/reviewabot
 
 ### 5. Create a PR and assign your reviewer to it
 Create a PR and assign the reviewer to it. The reviewer will then generate a review message for the PR.
@@ -117,10 +64,10 @@ Create a new release in GitHub. The GitHub Release Action generate the binaries 
 
 ## TODO
 * Use a better tool for parsing command line arguments
-* Make instructions configurable form a markdown file
+* Make instructions configurable from a markdown file
 * Use Spectre Console to make things nice to look at
 * Create some tests
-* Create a GitHub Action that runs the bot
+* Include Azure OpenAI as an option
 
 ## License
 See the [LICENSE](LICENSE) file for license rights and limitations (MIT).
