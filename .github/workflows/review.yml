@@ -1,0 +1,16 @@
+name: Review Pull Request
+
+on:
+  pull_request_target:
+    types: [review_requested]
+    
+jobs:
+  review:
+    if: ${{ github.event.requested_reviewer.login == 'Reviewabot' }}
+    runs-on: ubuntu-latest 
+    steps:
+    - name: Run Reviewabot
+      uses: reviewabot/action@v2
+      with:
+        open-api-key: ${{ secrets.OPENAPI_KEY }}
+        reviewer-pat: ${{ secrets.REVIEWER_GITHUB_PAT }}
