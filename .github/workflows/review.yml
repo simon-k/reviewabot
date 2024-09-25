@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
     - name: Run Reviewabot
-      uses: reviewabot/action@v2
+      uses: Reviewabot/action@v2
       with:
         open-api-key: ${{ secrets.OPENAPI_KEY }}
         reviewer-pat: ${{ secrets.REVIEWER_GITHUB_PAT }}
