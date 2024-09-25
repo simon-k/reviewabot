@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Instructions to README.md about how to release
 - Instructions to README.md about how to contribute
 
+### Changed
+
+- Enabling certificate revocation checks
+- Command argument print to console improved 
+
+
 ## [1.0.0] - 2024-09-20
 
 ### Added 

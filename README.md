@@ -117,7 +117,6 @@ Create a new release in GitHub. The GitHub Release Action generate the binaries 
 
 ## TODO
 * Use a better tool for parsing command line arguments
-* Right now the HttpClient ignores certificates. Make that configurable.
 * Make instructions configurable form a markdown file
 * Use Spectre Console to make things nice to look at
 * Create some tests
