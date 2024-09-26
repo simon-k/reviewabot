@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Enabling certificate revocation checks.
-- Command argument print to console improved .
+- Command argument print to console improved.
 
 
 ## [1.0.0] - 2024-09-20
