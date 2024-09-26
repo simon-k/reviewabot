@@ -6,11 +6,11 @@ A friend that can help you review PRs when there are no one else to help you.
 ## Limitations
 This is a very simple bot that uses the OpenAI API to generate a review message for a PR. 
 
-Reviewabot only knows about the PR diff. It does have the entire repository as a context like. 
+Reviewabot only knows about the PR diff. It does have the entire repository as a context like GitHub Copilot might have. 
 
 There might be better solutions out there. And I am sure that GitHub is working on a CodeReview Bot that will be able to do this better.
 
-## How to use this too
+## How to use this tool
 ### 1. Create a user account for the reviewer/bot and add it as a collaborator
 Go to Github and create a new user account that will be used to review the PRs. Add the new user as a collaborator to your repository.
 
@@ -26,7 +26,7 @@ Create a new GitHub Action in your repository that runs the Reviewabot. Use the 
 https://github.com/marketplace/actions/reviewabot
 
 ### 5. Create a PR and assign your reviewer to it
-Make sure the GitHub action is triggered in a workflow. See the descrioption in [Reviewabot Marketplace](https://github.com/marketplace/actions/reviewabot).
+Make sure the GitHub action is triggered in a workflow. See the description in [Reviewabot Marketplace](https://github.com/marketplace/actions/reviewabot).
 
 Reviewabot will always approve your PR.
 
