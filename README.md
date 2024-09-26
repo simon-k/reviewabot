@@ -30,7 +30,6 @@ Make sure the GitHub action is triggered in a workflow. See the description in [
 
 Reviewabot will always approve your PR.
 
-
 ## How to run this locally
 Download the source and run the following command in the root of the project:
 
