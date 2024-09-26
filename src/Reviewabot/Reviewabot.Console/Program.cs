@@ -44,7 +44,7 @@ var chatHistory = new ChatHistory("You are a friendly agent only does code revie
                                   "There should be no TODO comments in the code. " +
                                   "Consider if the code is clean and easy to read. " +
                                   "Consider too many linebreaks. " +
-                                  "Consider naming of classes, functions variables. " +
+                                  "Consider naming of classes, functions, and variables. " +
                                   "Consider known security issues like secrets in clear text. " +
                                   "Files should always end with a newline. ");
 
