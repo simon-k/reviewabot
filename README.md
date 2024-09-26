@@ -5,33 +5,30 @@ A friend that can help you review PRs when there are no one else to help you.
 
 ## Limitations
 This is a very simple bot that uses the OpenAI API to generate a review message for a PR. 
-It is not very smart and will not be able to provide a lot of help. 
-It is more of a proof of concept than a real tool.
 
-The reason is that the tool does not have the entire context of the repository like GitHub copilot would have.
+Reviewabot only knows about the PR diff. It does have the entire repository as a context like GitHub Copilot might have. 
 
-So there might be better solutions out there. And I am sure that GitHub is working on a CodeReview Bot that will be able to do this better.
+There might be better solutions out there. And I am sure that GitHub is working on a CodeReview Bot that will be able to do this better.
 
-## How to use this too
+## How to use this tool
 ### 1. Create a user account for the reviewer/bot and add it as a collaborator
 Go to Github and create a new user account that will be used to review the PRs. Add the new user as a collaborator to your repository.
+
 ### 2. Create a Personal Access Token
 Under settings for the new user account, create a new Personal Access Token that has access to source and read/write to Pull Requests.
+
 ### 3. Create an OpenAI API key
 Go to OpenAI and create an API key.
+
 ### 4. Create a GitHub Action in your repository
 Create a new GitHub Action in your repository that runs the Reviewabot. Use the action from the Marketplace.
 
 https://github.com/marketplace/actions/reviewabot
 
 ### 5. Create a PR and assign your reviewer to it
-Create a PR and assign the reviewer to it. The reviewer will then generate a review message for the PR.
-The reviewer will always approve your PR.
+Make sure the GitHub action is triggered in a workflow. See the description in [Reviewabot Marketplace](https://github.com/marketplace/actions/reviewabot).
 
-### Debugging the pipeline
-_The pipeline is skipped_
-This is most likeley because the repository action variable `REVIEWER_NAME` has the wrong value. 
-It should be the name of the user that reviews the code. It is the user that you created in step 1.
+Reviewabot will always approve your PR.
 
 ## How to run this locally
 Download the source and run the following command in the root of the project:
@@ -63,11 +60,12 @@ Contact me. I would like your input. Or just create a PR with your improvements.
 Create a new release in GitHub. The GitHub Release Action generate the binaries and attach them to the release.
 
 ## TODO
-* Use a better tool for parsing command line arguments
 * Make instructions configurable from a markdown file
 * Use Spectre Console to make things nice to look at
+* Use a better tool for parsing command line arguments
 * Create some tests
 * Include Azure OpenAI as an option
+* Add OpenSSF Scorecard
 
 ## License
 See the [LICENSE](LICENSE) file for license rights and limitations (MIT).
