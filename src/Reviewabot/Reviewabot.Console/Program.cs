@@ -49,6 +49,8 @@ Console.WriteLine($"Get the PR. Owner: {owner}, Repo: {repo}, PR Number: {prNumb
 var pr = new PullRequest(gitHubPat);
 var diff = await pr.GetPrDiffAsync(owner, repo, prNumber);
 
+Console.WriteLine($"PR Diff: {Environment.NewLine}{diff}");
+
 chatHistory.AddUserMessage($"Review this PR: {Environment.NewLine}{diff}");
 var review = await chatService.GetChatMessageContentAsync(chatHistory, settings);
 
