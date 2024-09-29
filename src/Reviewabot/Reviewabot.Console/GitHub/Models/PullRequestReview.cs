@@ -2,8 +2,8 @@ namespace Reviewabot.Console.GitHub.Models;
 
 public class PullRequestReview
 {
-    public string Body { get; set; }
-    public string Event { get; set; }
+    public required string Body { get; set; }
+    public required string Event { get; set; }
     //TODO: Support comments
     /*{
         "comments": [

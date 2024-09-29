@@ -77,7 +77,6 @@ Create a new release in GitHub. The GitHub Release Action generate the binaries 
 * Use Spectre Console to make things nice to look at
 * Use a better tool for parsing command line arguments
 * Create some tests
-* Include Azure OpenAI as an option
 * Add OpenSSF Scorecard
 
 ## License
